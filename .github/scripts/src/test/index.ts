@@ -2,6 +2,7 @@ import { SonarScannerClient } from "@tahminator/pipeline";
 import { $ } from "bun";
 
 import { exclusions } from "../../../../exclusions";
+import { SONAR_ORGANIZATION, SONAR_PROJECT_KEY } from "../consts";
 import { goEnv } from "../toolchain";
 
 const sourceDirs = "cmd,internal,frontend";
@@ -22,9 +23,9 @@ async function main() {
         exclusions: testFiles,
         "coverage.exclusions": `${exclusions}`,
       },
-      organization: "patina-network",
+      organization: SONAR_ORGANIZATION,
       sourceCodeDir: sourceDirs,
-      projectKey: "Patina-Network_hello-world-grpc-client-go",
+      projectKey: SONAR_PROJECT_KEY,
     },
     run: {
       runTestsCmd:

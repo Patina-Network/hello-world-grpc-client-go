@@ -36,9 +36,7 @@ jobs:
         uses: tahminator/pipeline/actions/setup@8601c1c7d28289879772574a60fe817fb953eeee # 1.0.93
         with:
           SECRETS: ${{ toJSON(secrets) }}
-
-      - name: Test CI scripts
-        run: bun run --cwd .github/scripts test
+          LINT_CI: true
 
       - name: Get parent SHA
         id: parent
@@ -68,9 +66,7 @@ jobs:
         uses: tahminator/pipeline/actions/setup@8601c1c7d28289879772574a60fe817fb953eeee # 1.0.93
         with:
           SECRETS: ${{ toJSON(secrets) }}
-
-      - name: Test CI scripts
-        run: bun run --cwd .github/scripts test
+          LINT_CI: true
 
       - name: Deploy client
         uses: ./.github/composite/deploy
