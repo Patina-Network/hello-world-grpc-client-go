@@ -2,6 +2,12 @@ export const GITHUB_OWNER = "Patina-Network";
 export const GITHUB_REPOSITORY = "hello-world-grpc-client-go";
 const DOCKER_REPOSITORY = "hello-world-client-go";
 
+/** Repo under GITHUB_OWNER that `deploy` opens image-tag PRs against. */
+export const K8S_MANIFESTS_REPOSITORY = "k8s-manifests";
+
+export const SONAR_ORGANIZATION = "patina-network";
+export const SONAR_PROJECT_KEY = `${GITHUB_OWNER}_${GITHUB_REPOSITORY}`;
+
 export const ARCHITECTURES = ["amd64", "arm64"] as const;
 export type Architecture = (typeof ARCHITECTURES)[number];
 

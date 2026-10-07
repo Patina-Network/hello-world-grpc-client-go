@@ -6,6 +6,7 @@ import {
   dockerRepository,
   GITHUB_OWNER,
   GITHUB_REPOSITORY,
+  K8S_MANIFESTS_REPOSITORY,
   requiredEnv,
   shortSha,
 } from "../consts";
@@ -50,10 +51,10 @@ async function main() {
 
   const repository = dockerRepository();
   await ghClient.updateK8sTagWithPR({
-    manifestRepo: [GITHUB_OWNER, "k8s-manifests"],
+    manifestRepo: [GITHUB_OWNER, K8S_MANIFESTS_REPOSITORY],
     originRepo: [GITHUB_OWNER, GITHUB_REPOSITORY],
     kustomizationFilePath: `base/${environment}/${repository}/kustomization.yaml`,
-    imageName: `patinanetwork/${dockerRepository("arm64")}`,
+    imageName: `${requiredEnv("DOCKER_HUB_USERNAME")}/${dockerRepository("arm64")}`,
     newTag: version,
     environment,
   });
