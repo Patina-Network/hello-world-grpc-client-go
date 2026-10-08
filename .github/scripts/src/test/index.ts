@@ -28,8 +28,7 @@ async function main() {
       projectKey: SONAR_PROJECT_KEY,
     },
     run: {
-      runTestsCmd:
-        $`go test -race -count=1 -coverprofile=coverage.out ./...`.env(goEnv),
+      runTestsCmd: $`go test -race -count=1 -coverprofile=coverage.out ./...`.env(goEnv),
     },
   });
 
