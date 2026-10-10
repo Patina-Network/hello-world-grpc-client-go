@@ -1,8 +1,4 @@
-import {
-  DockerClient,
-  type Environment,
-  GitHubClient,
-} from "@tahminator/pipeline";
+import { DockerClient, type Environment, GitHubClient } from "@tahminator/pipeline";
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
 
@@ -48,14 +44,9 @@ async function main() {
   const image = `${dockerHubUsername}/${repository}`;
   const short = shortSha(sha);
   const tags =
-    environment === "staging" ?
-      [`staging-${short}`, `sha-${sha}`]
-    : [short, `sha-${sha}`];
+    environment === "staging" ? [`staging-${short}`, `sha-${sha}`] : [short, `sha-${sha}`];
 
-  await using dockerClient = await DockerClient.create(
-    dockerHubUsername,
-    dockerHubPat,
-  );
+  await using dockerClient = await DockerClient.create(dockerHubUsername, dockerHubPat);
 
   await dockerClient.buildImage({
     dockerRepository: repository,

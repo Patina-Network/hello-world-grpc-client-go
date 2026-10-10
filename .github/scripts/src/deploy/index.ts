@@ -39,9 +39,9 @@ const { environment, releaseTag, sha } = await yargs(hideBin(process.argv))
 
 async function main() {
   const version =
-    environment === "staging" ?
-      `staging-${shortSha(sha ?? "")}`
-    : (releaseTag ?? shortSha(sha ?? ""));
+    environment === "staging"
+      ? `staging-${shortSha(sha ?? "")}`
+      : (releaseTag ?? shortSha(sha ?? ""));
 
   const ghClient = await GitHubClient.createWithGithubAppToken({
     appId: requiredEnv("_GITHUB_APP_APP_ID"),
