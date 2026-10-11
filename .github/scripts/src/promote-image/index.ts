@@ -2,12 +2,7 @@ import { DockerClient } from "@tahminator/pipeline";
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
 
-import {
-  ARCHITECTURES,
-  dockerRepository,
-  requiredEnv,
-  shortSha,
-} from "../consts";
+import { ARCHITECTURES, dockerRepository, requiredEnv, shortSha } from "../consts";
 
 const { releaseTag, sha, arch } = await yargs(hideBin(process.argv))
   .option("releaseTag", {
@@ -22,8 +17,7 @@ const { releaseTag, sha, arch } = await yargs(hideBin(process.argv))
   })
   .option("arch", {
     choices: ARCHITECTURES,
-    describe:
-      "Image architecture to promote. Must match the runner's architecture",
+    describe: "Image architecture to promote. Must match the runner's architecture",
     default: "amd64" as const,
   })
   .strict()
