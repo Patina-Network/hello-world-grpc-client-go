@@ -17,7 +17,7 @@ concurrency:
 jobs:
   backendTest:
     name: Backend tests
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
 
     steps:
       - name: Checkout Repository
@@ -53,9 +53,9 @@ jobs:
       matrix:
         include:
           - arch: amd64
-            runner: ubuntu-latest
+            runner: ubuntu-26.04
           - arch: arm64
-            runner: ubuntu-24.04-arm
+            runner: ubuntu-26.04-arm
 
     steps:
       - name: Checkout Repository
@@ -81,7 +81,7 @@ jobs:
 
   deployStaging:
     name: Deploy to staging
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     needs: [buildImage]
 
     if: >-
@@ -110,7 +110,7 @@ jobs:
 
   createTag:
     name: Create new tag
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     needs: [buildImage]
 
     if: github.ref_name == 'main'

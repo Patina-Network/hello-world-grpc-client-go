@@ -22,9 +22,9 @@ jobs:
       matrix:
         include:
           - arch: amd64
-            runner: ubuntu-latest
+            runner: ubuntu-26.04
           - arch: arm64
-            runner: ubuntu-24.04-arm
+            runner: ubuntu-26.04-arm
 
     steps:
       - name: Checkout Repository
@@ -51,7 +51,7 @@ jobs:
 
   deployProduction:
     name: Deploy to production
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     needs: [promoteImage]
 
     concurrency:
